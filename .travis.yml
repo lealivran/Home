@@ -1,12 +1,21 @@
+sudo: false
 language: node_js
 node_js:
-  - 4.2.3
-matrix:
-  fast_finish: true
-  allow_failures:
-    - node_js: 5.1.1
-before_script:
-  - npm install -g bower grunt-cli
-  - gem install sass
-  - bower install
-services: mongodb
+  - "5.0"
+
+cache:
+  directories:
+    - node_modules
+
+install:
+  - npm install
+
+script:
+  - npm run lint
+  - npm run test
+  - NODE_ENV=development npm run deploy
+  - NODE_ENV=staging npm run deploy
+  - NODE_ENV=production npm run deploy
+
+after_success:
+  - npm run codecov
