@@ -30,7 +30,6 @@ if (config.proxy && config.proxy.enabled) {
   app.use(convert(proxy(config.proxy.options)))
 }
 
-
 // const modelsPath = "./lib/models";
 // fs.readdirSync(modelsPath).forEach(function(file) {
 //   if (~file.indexOf("js")) {

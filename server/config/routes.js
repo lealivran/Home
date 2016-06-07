@@ -1,6 +1,7 @@
 "use strict";
-var Router = require("koa-router");
-var annonceCtrl = require("../lib/api/annonces");
+const Router = require("koa-router");
+const koaBody = require('koa-body')();
+const annonceCtrl = require("../lib/api/annonces");
 
 
 module.exports = function(app) {
@@ -8,6 +9,6 @@ module.exports = function(app) {
   var router = new Router();
   // secured routes
   router.get("/annonces", annonceCtrl.getAllAnnonces);
-  router.post("/annonce", annonceCtrl.createAnnonce);
+  router.post("/annonce",koaBody, annonceCtrl.createAnnonce);
   app.use(router.routes());
 };
