@@ -44,5 +44,5 @@ const annonceSchema = new Schema({
   }
 });
 
-let Annonce = mongoose.model('annonce', annonceSchema);
-module.exports = Annonce;
+let model = mongoose.model('Annonce', annonceSchema);
+module.exports = model

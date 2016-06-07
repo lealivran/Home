@@ -1,5 +1,4 @@
-import React from 'react'
-import DuckImage from '../assets/Duck.jpg'
+import React from 'react' 
 import CityPresentation from '../../../components/cityPresentation'
 import classes from './HomeView.scss'
 

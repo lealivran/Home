@@ -1,4 +1,5 @@
 import Koa from 'koa'
+import fs from 'fs'
 import convert from 'koa-convert'
 import webpack from 'webpack'
 import webpackConfig from '../build/webpack.config'
@@ -9,80 +10,33 @@ import _debug from 'debug'
 import config from '../config'
 import webpackDevMiddleware from './middleware/webpack-dev'
 import webpackHMRMiddleware from './middleware/webpack-hmr'
-
-// essayer avec que mongoose
-// import mongoose from 'koa-mongoose'
 import mongoose from 'mongoose'
 import _ from 'koa-route'
-
-import annonces from './lib/api/annonces'
-
 const debug = _debug('app:server')
 const paths = config.utils_paths
 const app = new Koa()
-
-
-// require('./lib/api/annonces')(app);
-
+const db = mongoose.connection;
+// ------------------------------------
+// Connect Database
+// ------------------------------------
+mongoose.connect('mongodb://lea:supdeweb@ds011893.mlab.com:11893/homesdw');
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', ()=> {
+  console.log("connected")
+});
+require("./config/routes")(app);
 // Enable koa-proxy if it has been enabled in the config.
 if (config.proxy && config.proxy.enabled) {
   app.use(convert(proxy(config.proxy.options)))
 }
 
-// This rewrites all routes requests to the root /index.html file
-// (ignoring file requests). If you want to implement isomorphic
-// rendering, you'll want to remove this middleware.
-// app.use(convert(historyApiFallback({
-//   verbose: false
-// })))
 
-
-var Annonce = require('./lib/model/annonce');
-
-mongoose.connect('mongodb://lea:supdeweb@ds011893.mlab.com:11893/homesdw');
-
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function() {
-  // we're connected!
-  console.log("connected");
-
-  // Annonce.find({}, function (err, annonces){
-  //   if (err) console.log(err);
-  //   console.log(annonces);
-  //   // res.render('restaurants/view', {title: 'Restaurant', restaurant});
-  //   // this.body = "annonces";
-  // })
-});
-
-// app.use(mongoose({
-//     username: 'lea',
-//     password: 'supdeweb',
-//     host: 'ds011893.mlab.com',
-//     port: 11893,
-//     // database: 'homesdw',
-//     database: ctx => {
-//         return ctx.headers['x-app']
-//     },
-//     schemas: './lib/model',
-//     db: {
-//         native_parser: true
-//     },
-//     server: {
-//         poolSize: 5
-//     }
-// }))
-
-app.use(_.get('/annonces', ()=>{
-  annonces.list.then((annonces)=>{
-    this.body = "annonces";
-  })
-  .catch(()=>{
-    console.log("pas d'annonce");
-  })
-} ));
-// app.use(_.get('/annonces/:id', annonces.show));
-
+// const modelsPath = "./lib/models";
+// fs.readdirSync(modelsPath).forEach(function(file) {
+//   if (~file.indexOf("js")) {
+//     require(modelsPath + "/" + file);
+//   }
+// });
 // ------------------------------------
 // Apply Webpack HMR Middleware
 // ------------------------------------
@@ -114,5 +68,12 @@ if (config.env === 'development') {
   // server in production.
   app.use(convert(serve(paths.dist())))
 }
+// This rewrites all routes requests to the root /index.html file
+// (ignoring file requests). If you want to implement isomorphic
+// rendering, you'll want to remove this middleware.
+// app.use(convert(historyApiFallback({
+//   verbose: false
+// })))
+
 
 export default app

@@ -1,83 +1,58 @@
-var mongoose = require('koa-mongoose')
-var Annonce = require('../model/annonce');
-import  Q from 'q'
+"use strict";
+const Annonce = require("../models/annonce") ;
 
-// var db = {
-//   tobi: { name: 'tobi', species: 'ferret' },
-//   loki: { name: 'loki', species: 'ferret' },
-//   jane: { name: 'jane', species: 'ferret' }
-// };
+exports.getAllAnnonces = function *() {
+  let annonces = yield Annonce.find().exec();
+  if (!annonces) {
 
-var annonces = {
-  list: function *(){
-
-    // var names = Object.keys(db);
-    // this.body = 'pets: ' + names.join(', ');
-
-
-    // let names = Object.keys(db);
-    // this.body = 'pets: ' + names.join(', ');
-
-    // yield user.saveQ()
-    //
-    // yield Model.find(..).exec()
-
-    console.log("je commence à charger les donnees");
-    // this.body = 'annonce';
-
-    // yield Annonce.find().exec();
-
-    // var res = yield Annonce.find({});
-    // this.body = res;
-
-    let defer = Q.defer()
-
-    Annonce.find({}, function (err, annonces){
-      if (err) {
-        defer.reject(err);
-      } else {
-        defer.resole(annonces);
-        console.log(annonces);
-      }
-      return defer.promise
-
-      // res.render('restaurants/view', {title: 'Restaurant', restaurant});
-      // this.body = "annonces";
-    })
-
-
-    // yield Annonce.find(function (err, annonces) {
-    //   if (err) return console.error(err);
-    //   console.log(annonces);
-    //   this.body = "annonces";
-    // }).exec()
-
-    // Annonce.find({restaurant_id:req.params.id}, function (err, restaurant){
-    //   if (err) console.log(err);
-    //   console.log(restaurant.grades);
-    //   res.render('restaurants/view', {title: 'Restaurant', restaurant});
-    // })
-
-  },
-
-  // show: function *(name){
-  //   let pet = db[name];
-  //   if (!pet) return this.throw('cannot find that pet', 404);
-  //   this.body = pet.name + ' is a ' + pet.species;
-  // }
+  }
+  this.body = { data: annonces };
 };
-
-module.exports = annonces;
-
-
-// var getMessage = function*(params) {
-//   var mPromise = MessageModel.find({
-//     to: params.to
-//   }).exec();
-//   yield mPromise;
-// }
-//
-// app.get('/message/to/:to', function*(next) {
-//   this.body =
-//     yield getMessage(this.params);
-// });
+exports.createAnnonce= function *() {
+  if (!this.request.body) {
+    this.throw("The body is empty", 400);
+  }
+  if (!this.request.body.title) {
+    this.throw("Missing title", 400);
+  }
+  if (!this.request.body.description) {
+    this.throw("Missing password", 400);
+  }
+  if (!this.request.body.vente) {
+    this.throw("Missing title", 400);
+  }
+  if (!this.request.body.price) {
+    this.throw("Missing password", 400);
+  }
+  if (!this.request.body.pictures) {
+    this.throw("Missing title", 400);
+  }
+  if (!this.request.body.furnished) {
+    this.throw("Missing password", 400);
+  }
+  if (!this.request.body.area) {
+    this.throw("Missing title", 400);
+  }
+  if (!this.request.body.orientation) {
+    this.throw("Missing password", 400);
+  }
+  if (!this.request.body.type) {
+    this.throw("Missing title", 400);
+  }
+  if (!this.request.body.address) {
+    this.throw("Missing password", 400);
+  }
+  if (!this.request.body.features) {
+    this.throw("Missing password", 400);
+  }
+  // try {
+  //   var user = new User({ username: this.request.body.username, password: this.request.body.password });
+  //   user = yield user.save();
+  //   yield this.login(user);
+  // } catch (err) {
+  //   this.throw(err);
+  // }
+  // 
+  // this.status = 200;
+  // this.body = { user: this.passport.user };
+};
