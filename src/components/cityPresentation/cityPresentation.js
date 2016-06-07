@@ -18,5 +18,4 @@ export const cityPresentation = () => (
     </div>
   </div>
 )
-
 export default cityPresentation
