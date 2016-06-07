@@ -10,9 +10,19 @@ import config from '../config'
 import webpackDevMiddleware from './middleware/webpack-dev'
 import webpackHMRMiddleware from './middleware/webpack-hmr'
 
+// essayer avec que mongoose
+// import mongoose from 'koa-mongoose'
+import mongoose from 'mongoose'
+import _ from 'koa-route'
+
+import annonces from './lib/api/annonces'
+
 const debug = _debug('app:server')
 const paths = config.utils_paths
 const app = new Koa()
+
+
+// require('./lib/api/annonces')(app);
 
 // Enable koa-proxy if it has been enabled in the config.
 if (config.proxy && config.proxy.enabled) {
@@ -22,9 +32,56 @@ if (config.proxy && config.proxy.enabled) {
 // This rewrites all routes requests to the root /index.html file
 // (ignoring file requests). If you want to implement isomorphic
 // rendering, you'll want to remove this middleware.
-app.use(convert(historyApiFallback({
-  verbose: false
-})))
+// app.use(convert(historyApiFallback({
+//   verbose: false
+// })))
+
+
+var Annonce = require('./lib/model/annonce');
+
+mongoose.connect('mongodb://lea:supdeweb@ds011893.mlab.com:11893/homesdw');
+
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  // we're connected!
+  console.log("connected");
+
+  // Annonce.find({}, function (err, annonces){
+  //   if (err) console.log(err);
+  //   console.log(annonces);
+  //   // res.render('restaurants/view', {title: 'Restaurant', restaurant});
+  //   // this.body = "annonces";
+  // })
+});
+
+// app.use(mongoose({
+//     username: 'lea',
+//     password: 'supdeweb',
+//     host: 'ds011893.mlab.com',
+//     port: 11893,
+//     // database: 'homesdw',
+//     database: ctx => {
+//         return ctx.headers['x-app']
+//     },
+//     schemas: './lib/model',
+//     db: {
+//         native_parser: true
+//     },
+//     server: {
+//         poolSize: 5
+//     }
+// }))
+
+app.use(_.get('/annonces', ()=>{
+  annonces.list.then((annonces)=>{
+    this.body = "annonces";
+  })
+  .catch(()=>{
+    console.log("pas d'annonce");
+  })
+} ));
+// app.use(_.get('/annonces/:id', annonces.show));
 
 // ------------------------------------
 // Apply Webpack HMR Middleware
