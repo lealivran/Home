@@ -4,8 +4,6 @@ import classes from './Header.scss'
 
 export const Header = () => (
   <header className={classes.header}>
-
-  
   </header>
 )
 

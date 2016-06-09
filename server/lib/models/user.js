@@ -1,0 +1,12 @@
+import mongoose from "mongoose"
+const Schema = mongoose.Schema
+const userSchema = new Schema({
+  pseudo : { type: String, required: true },
+  email: { type: String,  required: true},
+  password: { type:String, required: true },
+  admin: {type:Boolean , default:false},
+  consulte: [{/* type object refto annonces id*/}]
+});
+
+let model = mongoose.model('User', userSchema);
+module.exports = model
