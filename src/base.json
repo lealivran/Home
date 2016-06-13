@@ -1,0 +1,187 @@
+[
+  {
+    "_id": "5756a09daf97c7a0453a662a",
+    "title": 0,
+    "description": 0,
+    "vente": false,
+    "price": 2642406220,
+    "pictures": [
+      {
+        "uri": "http://www.spy-immo.fr/site/images/normal/Laius-des-pages-annonces-Annonces---Maisons549be49f405bb.pnge"
+      }
+    ],
+    "furnished": true,
+    "area": 2637318104,
+    "orientation": "west",
+    "type": "house",
+    "address": {
+      "building": 57,
+      "street": "Crown Street",
+      "zipcode": 31258,
+      "coord": {
+        "latitude": -85.612774,
+        "longitude": -150.798967,
+        "city": "Vivian"
+      }
+    },
+    "features": {
+      "roomNumber": 21,
+      "bedroomNumber": 7,
+      "stairs": 1,
+      "cave": true,
+      "parking": false,
+      "terrace": true,
+      "balcony": false,
+      "garden": true,
+      "pool": true
+    }
+  },
+  {
+    "_id": "5756a09d2744ebef76c52b8a",
+    "title": 1,
+    "description": 1,
+    "vente": false,
+    "price": 4070027625,
+    "pictures": [
+      {
+        "uri": "http://www.spy-immo.fr/site/images/normal/Laius-des-pages-annonces-Annonces---Maisons549be49f405bb.pnge"
+      }
+    ],
+    "furnished": true,
+    "area": 6316998908,
+    "orientation": "south",
+    "type": "flat",
+    "address": {
+      "building": 123,
+      "street": "Batchelder Street",
+      "zipcode": 62627,
+      "coord": {
+        "latitude": 17.479782,
+        "longitude": 126.413825,
+        "city": "Ernstville"
+      }
+    },
+    "features": {
+      "roomNumber": 14,
+      "bedroomNumber": 21,
+      "stairs": 2,
+      "cave": false,
+      "parking": false,
+      "terrace": true,
+      "balcony": true,
+      "garden": false,
+      "pool": true
+    }
+  },
+  {
+    "_id": "5756a09d8f8f998ce64fc827",
+    "title": 2,
+    "description": 2,
+    "vente": true,
+    "price": 6457315500,
+    "pictures": [
+      {
+        "uri": "http://www.spy-immo.fr/site/images/normal/Laius-des-pages-annonces-Annonces---Maisons549be49f405bb.pnge"
+      }
+    ],
+    "furnished": false,
+    "area": 4039258352,
+    "orientation": "east",
+    "type": "loft",
+    "address": {
+      "building": 12,
+      "street": "Varick Street",
+      "zipcode": 96275,
+      "coord": {
+        "latitude": -65.969346,
+        "longitude": 27.516494,
+        "city": "Barronett"
+      }
+    },
+    "features": {
+      "roomNumber": 7,
+      "bedroomNumber": 7,
+      "stairs": 3,
+      "cave": false,
+      "parking": true,
+      "terrace": true,
+      "balcony": false,
+      "garden": false,
+      "pool": false
+    }
+  },
+  {
+    "_id": "5756a09d13f64905e6c032fa",
+    "title": 3,
+    "description": 3,
+    "vente": false,
+    "price": 7979490143,
+    "pictures": [
+      {
+        "uri": "http://www.spy-immo.fr/site/images/normal/Laius-des-pages-annonces-Annonces---Maisons549be49f405bb.pnge"
+      }
+    ],
+    "furnished": false,
+    "area": 1258485515,
+    "orientation": "east",
+    "type": "loft",
+    "address": {
+      "building": 172,
+      "street": "Colonial Court",
+      "zipcode": 59381,
+      "coord": {
+        "latitude": 1.242612,
+        "longitude": 41.822324,
+        "city": "Bakersville"
+      }
+    },
+    "features": {
+      "roomNumber": 8,
+      "bedroomNumber": 24,
+      "stairs": 3,
+      "cave": false,
+      "parking": false,
+      "terrace": false,
+      "balcony": false,
+      "garden": true,
+      "pool": true
+    }
+  },
+  {
+    "_id": "5756a09db03e803c6f3cc4fe",
+    "title": 4,
+    "description": 4,
+    "vente": true,
+    "price": 2771184378,
+    "pictures": [
+      {
+        "uri": "http://www.spy-immo.fr/site/images/normal/Laius-des-pages-annonces-Annonces---Maisons549be49f405bb.pnge"
+      }
+    ],
+    "furnished": false,
+    "area": 7174199326,
+    "orientation": "south",
+    "type": "flat",
+    "address": {
+      "building": 108,
+      "street": "Clark Street",
+      "zipcode": 13179,
+      "coord": {
+        "latitude": 18.929781,
+        "longitude": 115.229597,
+        "city": "Ribera"
+      }
+    },
+    "features": {
+      "roomNumber": 49,
+      "bedroomNumber": 25,
+      "stairs": 4,
+      "cave": false,
+      "parking": false,
+      "terrace": false,
+      "balcony": true,
+      "garden": false,
+      "pool": false
+    }
+  }
+]
