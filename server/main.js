@@ -7,15 +7,21 @@ import historyApiFallback from 'koa-connect-history-api-fallback'
 import serve from 'koa-static'
 import proxy from 'koa-proxy'
 import _debug from 'debug'
-import config from '../config'
 import webpackDevMiddleware from './middleware/webpack-dev'
 import webpackHMRMiddleware from './middleware/webpack-hmr'
 import mongoose from 'mongoose'
 import _ from 'koa-route'
+import session from 'koa-session'
+import passport from 'koa-passport'
+import config from './config/config'
 const debug = _debug('app:server')
 const paths = config.utils_paths
 const app = new Koa()
 const db = mongoose.connection;
+// Sessions
+app.keys = ['38ba4e028d32464afd59bc1ac97a5f966e8fb65f']
+app.use(session(app))
+require("./config/passport")(passport, config);
 // ------------------------------------
 // Connect Database
 // ------------------------------------
@@ -65,7 +71,7 @@ if (config.env === 'development') {
   // Serving ~/dist by default. Ideally these files should be served by
   // the web server and not the app server, but this helps to demo the
   // server in production.
-  app.use(convert(serve(paths.dist())))
+  // app.use(convert(serve(paths.dist())))
 }
 // This rewrites all routes requests to the root /index.html file
 // (ignoring file requests). If you want to implement isomorphic

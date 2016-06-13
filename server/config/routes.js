@@ -9,10 +9,17 @@ module.exports = function(app) {
   // register functions
   var router = new Router();
   // open routes
+  //annonces
   router.get("/annonces", annonceCtrl.getAllAnnonces);
   router.post("/annonce",koaBody, annonceCtrl.createAnnonce);
-
-  // secure routes
+  //user and auth
+  router.get("/auth", userCtrl.getCurrentUser);
+  router.post("/auth", userCtrl.signIn);
+  router.all("/signout", userCtrl.signOut);
+  router.post("/signup",koaBody, userCtrl.createUser);
+  // secure   admin routes
   router.get("users", userCtrl.getAllUser);
+  // secure    routes
+  // router.get("users", userCtrl.getAllUser);
   app.use(router.routes());
 };
