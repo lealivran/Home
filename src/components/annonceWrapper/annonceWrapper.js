@@ -1,17 +1,46 @@
 import React, { Component, PropTypes } from 'react';
 import { IndexLink, Link } from 'react-router'
+import fetch from 'isomorphic-fetch'
+// import fetch from 'fetch'
+// const fetchUrl = fetch.fetchUrl;
+
+
 import classes from './annonceWrapper.scss'
 import Annonce from '../Annonce'
 
 export default class annonceWrapper extends Component {
 
-  render(){
+  state = {
+    annonces: [],
+  };
 
+  fetchLastAnnonce = () => {
+    fetch('/last/annonces/')
+    .then((response) => {
+      return response.json()
+    })
+    .then((lastAnnonces) => {
+      this.setState({annonces: lastAnnonces.data })
+      // console.log(lastAnnonces);
+    })
+    .catch((error) => {
+      console.warn(error);
+    });
+  };
+
+  componentDidMount() {
+    this.fetchLastAnnonce();
+  };
+
+  render(){
     return (
       <div className={classes.annonceContainer}>
-        <Annonce/>
-        <Annonce/>
-        <Annonce/>
+        {this.state.annonces.map((annonce, index) => {
+          return <Annonce
+                  title={annonce.title}
+                  price={annonce.price}
+                  />
+        })}
       </div>
     )
   }
