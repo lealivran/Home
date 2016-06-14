@@ -1,7 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import { IndexLink, Link } from 'react-router'
-require('es6-promise').polyfill();
-require('isomorphic-fetch');
+import fetch from 'isomorphic-fetch'
+// import fetch from 'fetch'
+// const fetchUrl = fetch.fetchUrl;
+
 
 import classes from './annonceWrapper.scss'
 import Annonce from '../Annonce'
@@ -9,41 +11,36 @@ import Annonce from '../Annonce'
 export default class annonceWrapper extends Component {
 
   state = {
-    lastAnnonces: null,
+    annonces: [],
   };
 
+  fetchLastAnnonce = () => {
+    fetch('/last/annonces/')
+    .then((response) => {
+      return response.json()
+    })
+    .then((lastAnnonces) => {
+      this.setState({annonces: lastAnnonces.data })
+      // console.log(lastAnnonces);
+    })
+    .catch((error) => {
+      console.warn(error);
+    });
+  };
 
-  fetch('/last/annonces/')
-	.then(function(response) {
-		if (response.status >= 400) {
-			throw new Error("Bad response from server");
-		}
-		return response.json();
-	})
-	.then(function(lastAnnonces) {
-		console.log(lastAnnonces);
-	});
-
-
+  componentDidMount() {
+    this.fetchLastAnnonce();
+  };
 
   render(){
     return (
       <div className={classes.annonceContainer}>
-        <Annonce
-          title={"maison"}
-          price={"2000"}
-          image={"http://www.maisonsclairlogis.fr/wp-content/uploads/maison-moderne_semnoz_700.jpg"}
-          />
-        <Annonce
-          title={"chateau"}
-          price={"20000"}
-          image={"http://www.chateaux-de-la-loire.fr/images/chateau_de_challain.jpg"}
-          />
-        <Annonce
-          title={"cabane"}
-          price={"800"}
-          image={"http://www.cabanes-des-legendes.com/photos/merlin-cabane-3.jpg"}
-          />
+        {this.state.annonces.map((annonce, index) => {
+          return <Annonce
+                  title={annonce.title}
+                  price={annonce.price}
+                  />
+        })}
       </div>
     )
   }
