@@ -23,6 +23,6 @@ module.exports = function(app) {
   // secure   admin routes
   router.get("users", userCtrl.getAllUser);
   // secure    routes
-  // router.get("users", userCtrl.getAllUser);
+  router.get("users", userCtrl.getAllUser);
   app.use(router.routes());
 };
