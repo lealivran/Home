@@ -1,39 +1,69 @@
-import React from 'react'
 import Annonce from '../../../components/Annonce'
 import classes from './AnnonceView.scss'
+import React, { Component, PropTypes } from 'react';
+import {connect} from "react-redux"
+import fetchJSON from "app/fetchJSON";
+import consts from "app/consts"
 
-export const AnnonceView = () => (
-  <div>
-    <p>coucou</p>
-  </div>
+// import { get as getArtist } from "app/reducers/artist"
+// import ItemDetails from "ItemDetails"
+
+@connect(
+    (state) => ({
+        Annonce : state.annonce
+    }),
+    (dispatch) => ({
+        getAllAnonce : (value) => dispatch(getAllAnonce(value)),
+    })
 )
+export default class AnnonceView extends Component {
 
-export default AnnonceView
+  static propTypes = {
+      params: PropTypes.shape({
+        annonceId:PropTypes.string,
+      }),
+      annonce : PropTypes.object,
+      getAllAnnonce : PropTypes.func,
+  };
 
-// router.post('/view/:restaurant_id', function(req,res){
-// 	Restaurants
-// 		.findOne({ restaurant_id: req.params.restaurant_id})
-// 		.then((restaurant) => {
-// 			const commentToCreate = Object.assign({},req.body,{restaurant})
-// 			return Comments.create(commentToCreate,(err, comment) => {
-// 							if(err) console.log('ERROR :', err)
-// 						});
-// 		})
-// 		.then((comment) => {
-// 			// Need to find a proper way to return the updated restaurant
-// 			Restaurants
-// 				.update(
-// 				  { restaurant_id: req.params.restaurant_id},
-// 				  { $push:{ "comments": comment._id}},
-// 				  { upsert:true }
-// 				 )
-// 				.exec()
-// 			Restaurants
-// 				.findOne({ restaurant_id: req.params.restaurant_id})
-// 				.populate('comments')
-// 				.then(
-// 					(restaurant) => res.render('restaurant/index', {restaurant}),
-// 					(err) => console.log(err)
-// 				);
-// 		})
-// })
+  static defaultProps = {
+      params: {},
+      annonce : null,
+      getAllAnnonce : () => {}
+  };
+  componentDidMount(){
+
+      const {
+        params,
+        getAllAnnonce,
+      } = this.props
+
+      if(params.annonceId) getAllAnnonce(params.annonceId)
+  }
+
+  componentWillReceiveProps(nextProps){
+    const {
+      params,
+      getAllAnnonce,
+    } = this.props
+
+    if(nextProps.params.annonceId!=params.annonceId){
+      getArtist(nextProps.params.annonceId)
+    }
+  }
+
+  render() {
+    const {
+      params,
+      annonce,
+    } = this.props
+    return (
+      <div>
+        {
+            // annonce && !annonce.loading &&
+            <AnnonceView title={annonce.name}  />
+        }
+      </div>
+    )
+  }
+}
