@@ -45,7 +45,7 @@ if (config.proxy && config.proxy.enabled) {
 // ------------------------------------
 // Apply Webpack HMR Middleware
 // ------------------------------------
-if (config.env === 'development') {
+if (config.app.env === 'development') {
   const compiler = webpack(webpackConfig)
 
   // Enable webpack-dev and webpack-hot middleware
@@ -58,7 +58,7 @@ if (config.env === 'development') {
   // these files. This middleware doesn't need to be enabled outside
   // of development since this directory will be copied into ~/dist
   // when the application is compiled.
-  app.use(convert(serve(paths.client('static'))))
+  app.use(convert(serve('../src')))
 } else {
   debug(
     'Server is being run outside of live development mode, meaning it will ' +
