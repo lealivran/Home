@@ -4,10 +4,19 @@ const Annonce = require("../models/annonce") ;
 exports.getAllAnnonces = function *() {
   let annonces = yield Annonce.find().exec();
   if (!annonces) {
-
+    this.throw(" can't find any annonce", 400);
   }
   this.body = { data: annonces };
 };
+exports.getLastAnnonce = function*(){
+  let annonces = yield Annonce.find({}).sort({date: 'desc'}).exec();
+  if (!annonces) {
+    this.throw(" can't find any annonce", 400);
+  }
+  let lastAnnonces = annonces.slice(0, 3)
+  this.body = { data: lastAnnonces };
+}
+
 exports.createAnnonce= function *() {
   console.log(this.request.body);
   if (!this.request.body) {

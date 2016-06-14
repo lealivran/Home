@@ -12,6 +12,7 @@ module.exports = function(app) {
   //annonces
   router.get("/annonces", annonceCtrl.getAllAnnonces);
   router.post("/annonce",koaBody, annonceCtrl.createAnnonce);
+  router.get("/last/annonce", annonceCtrl.getLastAnnonce);
   //user and auth
   router.get("/auth", userCtrl.getCurrentUser);
   router.post("/auth", userCtrl.signIn);

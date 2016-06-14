@@ -41,7 +41,8 @@ const annonceSchema = new Schema({
     balcony : { type: Boolean, default: false, required: true},
     garden : { type: Boolean, default: false, required: true},
     pool : { type: Boolean, default: false, required: true}
-  }
+  },
+  date:{type: Date, default: Date.now }
 });
 
 let model = mongoose.model('Annonce', annonceSchema);
