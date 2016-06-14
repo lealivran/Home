@@ -77,6 +77,31 @@ exports.getAnnonces = function*(){
   let annonces = yield Annonce.find(basicSearch).exec();
   this.body = {annonces:annonces }
 }
+exports.getAnnonceFromLocation = function *(){
+  if (!this.request.body) {
+    this.throw("The body is empty", 400);
+  }
+  if (!this.request.body.latitude) {
+    this.throw("The body latitude is empty", 400);
+  }
+  if (!this.request.body.longitude) {
+    this.throw("The body longitude is empty", 400);
+  }
+  let roundFiveKm = 0.045;
+  let latitude = { $lt: (this.request.body.latitude - roundFiveKm), $gt:(this.request.body.latitude + roundFiveKm) }
+  let latitudeAnnonces = yield Annonce.find({address:{coord:{
+    longitude: this.request.body.longitude,
+    latitude: latitude
+  }}
+ }).exec();
+ let longitude = { $lt: (this.request.body.longitude - roundFiveKm), $gt:(this.request.body.longitude + roundFiveKm) }
+ let longitudeAnnonces = yield Annonce.find({address:{coord:{
+   longitude: longitude,
+   latitude: this.request.body.latitude
+ }}
+}).exec();
+//merge array union
+}
 
 exports.createAnnonce= function *() {
   console.log(this.request.body);
