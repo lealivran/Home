@@ -1,5 +1,6 @@
-import React from 'react' 
+import React from 'react'
 import CityPresentation from '../../../components/cityPresentation'
+
 import classes from './HomeView.scss'
 
 export const HomeView = () => (
