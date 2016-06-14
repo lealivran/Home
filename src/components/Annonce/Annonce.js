@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-
-=======
->>>>>>> 8c96581ee591bfc0965aae1ef0238e67d0f529d0
 import React from 'react'
 import { IndexLink, Link } from 'react-router'
 import classes from './Annonce.scss'
