@@ -5,8 +5,9 @@ import Annonce from '../Annonce'
 
 export default class annonceWrapper extends Component {
 
-  render(){
 
+
+  render(){
     return (
       <div className={classes.annonceContainer}>
         <Annonce/>
