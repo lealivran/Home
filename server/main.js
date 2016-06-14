@@ -21,7 +21,9 @@ const db = mongoose.connection;
 // Sessions
 app.keys = ['38ba4e028d32464afd59bc1ac97a5f966e8fb65f']
 app.use(session(app))
-require("./config/passport")(passport, config);
+require("./config/passport")(passport, config)
+app.use(passport.initialize())
+app.use(passport.session())
 // ------------------------------------
 // Connect Database
 // ------------------------------------

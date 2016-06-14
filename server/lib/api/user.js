@@ -44,7 +44,7 @@ exports.createUser= function *() {
     })
     console.log(this);
      user = yield user.save()
-     yield this.Authenticated(user)
+     yield this.login(user)
   } catch (err) {
      this.throw(err)
   }
