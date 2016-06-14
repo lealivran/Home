@@ -17,6 +17,13 @@ exports.getLastAnnonce = function*(){
   this.body = { data: lastAnnonces };
 }
 
+exports.getAnnoncesByCity = function*(){
+  let annonces = yield Annonce.find({address:{city: this.params.city}}).sort({price: 'asc'}).exec();
+  if (!annonces) {
+    this.throw(" can't find any annonce for this city", 400);
+  }
+  this.body = { data: annonces };
+}
 exports.createAnnonce= function *() {
   console.log(this.request.body);
   if (!this.request.body) {
