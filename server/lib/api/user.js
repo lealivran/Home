@@ -52,8 +52,6 @@ exports.createUser= function *() {
   this.body = { user: this.passport.user }
 };
 
-
-
 exports.signOut = function *() {
   this.logout();
   this.session = null;

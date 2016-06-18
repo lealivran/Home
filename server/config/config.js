@@ -1,17 +1,14 @@
-"use strict";
-var path = require("path");
-var _ = require("lodash");
-
-var env = process.env.NODE_ENV = process.env.NODE_ENV || "development";
-
-var base = {
+import path from 'path'
+import _ from 'lodash'
+const env = process.env.NODE_ENV = process.env.NODE_ENV || "development";
+const base = {
   app: {
     root: path.normalize(path.join(__dirname, "/..")),
     env: env,
   },
 };
 
-var specific = {
+const specific = {
   development: {
     app: {
       port: 3000,

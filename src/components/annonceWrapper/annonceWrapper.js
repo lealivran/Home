@@ -1,10 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { IndexLink, Link } from 'react-router'
 import fetch from 'isomorphic-fetch'
-// import fetch from 'fetch'
-// const fetchUrl = fetch.fetchUrl;
-
-
 import classes from './annonceWrapper.scss'
 import Annonce from '../Annonce'
 
@@ -21,7 +17,6 @@ export default class annonceWrapper extends Component {
     })
     .then((lastAnnonces) => {
       this.setState({annonces: lastAnnonces.data })
-      // console.log(lastAnnonces);
     })
     .catch((error) => {
       console.warn(error);

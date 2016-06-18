@@ -101,6 +101,8 @@ exports.getAnnonceFromLocation = function *(){
  }}
 }).exec();
 //merge array union
+let annonces = latitudeAnnonces.join(longitudeAnnonces)
+this.body = {annonces: annonces}
 }
 
 exports.createAnnonce= function *() {
