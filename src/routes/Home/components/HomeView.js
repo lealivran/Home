@@ -7,6 +7,7 @@ import classes from './HomeView.scss'
 
 export const HomeView = () => (
   <div>
+    <Header />
     <CityPresentation/>
     <AnnonceWrapper/>
   </div>
