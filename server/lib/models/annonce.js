@@ -15,6 +15,7 @@ const annonceSchema = new Schema({
     enum : ['south', 'north', 'west', 'east'],
     default : ''
   },
+  sold: { type: Boolean, default: false},
   type : {
     type: String,
     enum : ['house', 'flat', 'castle', 'loft'],
