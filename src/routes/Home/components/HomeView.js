@@ -11,6 +11,9 @@ export const HomeView = () => (
     <Link to='admin/create/annonce'>
       Zen
     </Link>
+    <Link to='admin'>
+      Home
+    </Link>
     <AnnonceWrapper/>
   </div>
 )

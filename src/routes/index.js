@@ -1,6 +1,8 @@
 // We only need to import the modules necessary for initial render
 import CoreLayout from '../layouts/CoreLayout/CoreLayout'
+import CoreAdminLayout from '../layouts/CoreAdminLayout/CoreAdminLayout'
 import Home from './Home'
+import AdminHome from './AdminHome'
 import CounterRoute from './Counter'
 import CreateAnnonce from './CreateAnnonce'
 /*  Note: Instead of using JSX, we recommend using react-router
@@ -22,8 +24,8 @@ export const createRoutes = (store) => ([
   },
   {
     path: '/admin',
-    component: CoreLayout,
-    indexRoute: Home,
+    component: CoreAdminLayout,
+    indexRoute: AdminHome,
     getChildRoutes (location, cb) {
       require.ensure([], (require) => {
         cb(null, [

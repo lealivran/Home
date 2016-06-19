@@ -145,7 +145,7 @@ exports.createAnnonce= function *() {
   }
   try {
     let annonce = new Annonce(this.request.body);
-    let   savedAnnonce = yield annonce.save();
+    let savedAnnonce = yield annonce.save();
     this.status = 200;
     this.body = { annonce: savedAnnonce };
   } catch (err) {
