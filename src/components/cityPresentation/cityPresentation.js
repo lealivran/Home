@@ -5,7 +5,7 @@ import { Grid, Row, Col } from 'react-bootstrap';
 
 
 export const cityPresentation = () => (
-   <Grid>
+<Grid>
    <Row className="show-grid onecity">
      <Col xs={12} md={12} lg={12}>
          <div className={classes.first} >
@@ -44,7 +44,7 @@ export const cityPresentation = () => (
          </h2>
      </Col>
    </Row>
-   </Grid>
+</Grid>
 
 )
 export default cityPresentation
