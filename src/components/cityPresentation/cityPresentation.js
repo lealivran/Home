@@ -3,12 +3,6 @@ import { IndexLink, Link } from 'react-router'
 import classes from './cityPresentation.scss'
 
 export const cityPresentation = () => (
-
-    // state = {
-    //   first: "",
-    //   second:"",
-    //   third: ""
-    // };
   <div className={classes.header}>
     <div className={classes.first} >
     </div>

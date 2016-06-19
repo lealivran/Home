@@ -1,9 +1,8 @@
 "use strict";
 const Router = require("koa-router");
-const koaBody = require('koa-body')();// body parser
+const koaBody = require('koa-body')({multipart:true});// body parser
 const annonceCtrl = require("../lib/api/annonces");
 const userCtrl = require("../lib/api/user");
-
 
 module.exports = function(app) {
   // register functions
