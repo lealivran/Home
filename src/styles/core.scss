@@ -6,6 +6,14 @@
   // Just remove them if they're not what you want
   html {
     box-sizing: border-box;
+      .row-no-gutter{
+         margin-right: 0;
+         margin-left: 0;
+         [class*="col-"] {
+            padding-right: 0;
+            padding-left: 0;
+         }
+      }
   }
 
   html,
@@ -13,6 +21,7 @@
     margin: 0;
     padding: 0;
     height: 100%;
+    font-family: 'Open Sans', sans-serif;
   }
 
   *,

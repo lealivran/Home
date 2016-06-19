@@ -7,7 +7,6 @@ import classes from './HomeView.scss'
 export const HomeView = () => (
   <div>
     <CityPresentation/>
-
     <div className={classes.annonceContainer}>
       <Annonce/>
       <Annonce/>

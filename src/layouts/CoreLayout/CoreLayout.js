@@ -1,5 +1,7 @@
 import React from 'react'
 import Header from '../../components/Header'
+import Footer from '../../components/Footer'
+
 import classes from './CoreLayout.scss'
 import '../../styles/core.scss'
 
@@ -9,6 +11,7 @@ export const CoreLayout = ({ children }) => (
     <div className={classes.mainContainer}>
       {children}
     </div>
+    <Footer />
   </div>
 )
 

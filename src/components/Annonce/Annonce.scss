@@ -1,24 +1,54 @@
-.annonce{
-  background-color: rgb(203, 38, 117);
-  margin: 10px;
+// .annonce{
+//   background-color: rgb(203, 38, 117);
+//   margin: 10px;
+//
+//   width: 360px;
+//   height: 300px;
+//
+//   line-height: 150px;
+//   color: white;
+//   font-size: 1em;
+//   text-align: center;
+//   position: relative;
+// }
+.vignettesAnnonce {
+   background-image:url('http://www.maisonsclairlogis.fr/wp-content/uploads/maison-moderne_semnoz_700.jpg');
+   position: relative;
+   height: 300px;
+   background-position: center;
+   background-size: cover;
+   .infobg {
+      background-color: black;
+      opacity: 0.5;
+      position: absolute;
+      width: 100%;
+      bottom: 0px;
+      height: 100px;
+   }
+   .info{
+      text-align: left;
+      padding-left: 15px;
+      padding-top: 15px;
+      position: absolute;
+      bottom: 0;
+      color: #fffff;
+      width: 100%;
+      bottom: 0px;
+      height: 100px;
+         p {
+            font-size: 15px;
+            color: #ffffff;
+            line-height: 10px;
+            &.titreannonce {
+               font-size: 20px;
+               font-weight: bold;
+            }
+            &.titreprix {
+               font-size: 25px;
+               font-weight: bold;
+               padding-top: 30px;
+            }
+         }
 
-  width: 360px;
-  height: 300px;
-
-  line-height: 150px;
-  color: white;
-  font-size: 1em;
-  text-align: center;
-
-  .bgAnnonce{
-    height: 100%;
-    width: 100%;
-  }
-
-  .info{
-    background-color: black;
-    opacity: 0.5;
-    position: absolute;;
-    // top: 0px;
-  }
+   }
 }

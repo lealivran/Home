@@ -1,0 +1,64 @@
+.containerSearchHome {
+   position: absolute;
+   bottom: 0px;
+   height: 100px;
+   width: 100%;
+   background-color: rgba(0, 0, 0, 0.4);
+   text-align: center;
+   padding-top: 15px;
+   padding-bottom: 15px;
+
+
+   select,input,button {
+      border-right: transparent;
+      border: 2px solid #e86a6a;
+      -webkit-appearance: none;
+      border-radius: 0;
+      outline: none;
+      padding-left: 10px;
+      color: #e86a6a;
+      font-size: 20px;
+      height: 70px;
+
+      // background-image: url('../asset/arrowDown.png');
+      background-repeat: no-repeat;
+      background-position: left center;
+      &::-webkit-input-placeholder {
+        color: #e86a6a;
+      }
+   }
+   button {
+      background-color: #e86a6a;
+      color: #ffffff;
+      transition: all 0.4s ease;
+      width: 100%;
+      &:hover {
+         background-color: #cc4343;
+         transition: all 0.4s ease;
+         color: #ffffff;
+         border: 2px solid #ffffff;
+      }
+   }
+   // .inputadress {
+   //    width: 30%;
+   //    padding-left: 35px;
+   //    color: #e86a6a;
+   //    font-size: 20px;
+   // }
+   // .inputprix {
+   //    width: 15%;
+   //    padding-left: 35px;
+   //    color: #e86a6a;
+   //    font-size: 20px;
+   // }
+   // .inputok {
+   //    width: 10%;
+   //    color: #e86a6a;
+   //    font-size: 20px;
+   //    padding-left: 0px;
+   // }
+}
+.contentSearchHome {
+   height: 70px;
+   border: 1px solid #e86a6a;
+}
