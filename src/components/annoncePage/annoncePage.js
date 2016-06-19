@@ -13,40 +13,34 @@ import InfoAnnonce from '../infoAnnonce'
 
 export default class annoncePage extends Component {
 
-  //
-  // static propTypes = {
-  //     params: PropTypes.shape({
-  //       annonceId:PropTypes.string,
-  //     }),
-  // };
-  //
-  // static defaultProps = {
-  //     params: {},
-  // };
-  //
-  // state = {
-  //   annonce: [],
-  // };
-  //
-  // fetchAnnonce = () => {
-  //   fetch('/'+params.annonceId)
-  //   .then((response) => {
-  //     return response.json()
-  //   })
-  //   .then((annonce) => {
-  //     this.setState({annonce: lastAnnonces.data })
-  //     // console.log(lastAnnonces);
-  //   })
-  //   .catch((error) => {
-  //     console.warn(error);
-  //   });
-  // };
-  //
-  // componentDidMount() {
-  //   this.fetchLastAnnonce();
-  // };
+  state = {
+    annonce: [],
+  };
+
+  fetchAnnonce = () => {
+    fetch('/annonce/'+this.props.params.id)
+    .then((response) => {
+      return response.json()
+    })
+    .then((annonce) => {
+      this.setState({annonce: annonce.data })
+      console.log(annonce);
+    })
+    .catch((error) => {
+      console.warn(error);
+    });
+  };
+
+  componentDidMount() {
+    this.fetchAnnonce();
+  };
 
   render(){
+
+    const {
+      params
+    } = this.props
+
     return (
 
       <div>

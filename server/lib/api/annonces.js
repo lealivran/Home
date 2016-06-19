@@ -8,17 +8,19 @@ exports.getAllAnnonces = function *() {
   }
   this.body = { data: annonces };
 };
-exports.getAnnonce = function *(params) {
-  console.log(params.id);
-  if (!params.id) {
+
+exports.getAnnonce = function *() {
+  console.log(this.params.id);
+  if (!this.params.id) {
     this.throw("Missing id", 400);
   }
-  let annonce = yield Annonce.find({_id:params.id}).exec();
+  let annonce = yield Annonce.findById(this.params.id).exec();
   if (!annonce) {
     this.throw(" can't find any annonce", 400);
   }
   this.body = { data: annonce };
 };
+
 exports.getLastAnnonce = function*(){
   let annonces = yield Annonce.find({}).sort({date: 'desc'}).exec();
   if (!annonces) {

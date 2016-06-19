@@ -21,7 +21,7 @@ export default class annonceWrapper extends Component {
     })
     .then((lastAnnonces) => {
       this.setState({annonces: lastAnnonces.data })
-      // console.log(lastAnnonces);
+      console.log(lastAnnonces);
     })
     .catch((error) => {
       console.warn(error);
@@ -36,10 +36,13 @@ export default class annonceWrapper extends Component {
     return (
       <div className={classes.annonceContainer}>
         {this.state.annonces.map((annonce, index) => {
-          return <Annonce
+          return <Link to={`/annonce/${annonce._id}`}>
+            <Annonce
+                  id={annonce._id}
                   title={annonce.title}
                   price={annonce.price}
                   />
+            </Link>
         })}
       </div>
     )

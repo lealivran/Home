@@ -6,15 +6,11 @@ export const Annonce = ({title ="", price="", image=null}) => (
 
   <div className={classes.annonce}>
     <div className={classes.info}>
-      <p>{title}
+      <p>titre
       <span>{price}€/mois</span>
       </p>
     </div>
     <img className={classes.bgAnnonce} src={image} />
-
-    <Link
-    to="/annonce/4657"
-    />
   </div>
 
 )
