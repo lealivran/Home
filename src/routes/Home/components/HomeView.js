@@ -1,6 +1,6 @@
 import React from 'react'
+import Header from '../../../components/Header'
 import CityPresentation from '../../../components/cityPresentation'
-import Annonce from '../../../components/Annonce'
 import AnnonceWrapper from '../../../components/AnnonceWrapper'
 import classes from './HomeView.scss'
 
