@@ -106,7 +106,7 @@ this.body = {annonces: annonces}
 }
 
 exports.createAnnonce= function *() {
-  console.log(this.request.body.uploads);
+  console.log(this.request.body);
   if (!this.request.body) {
     this.throw("The body is empty", 400);
   }

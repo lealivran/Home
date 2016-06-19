@@ -1,5 +1,5 @@
 export default (store) => ({
-  path: 'admin/create/annonce',
+  path: 'create/annonce',
   getComponent (nextState, next) {
     require.ensure([
       './containers/CreateAnnonceContainer',
