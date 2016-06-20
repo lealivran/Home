@@ -17,7 +17,9 @@ export const createRoutes = (store) => ([
       require.ensure([], (require) => {
         cb(null, [
           require('./Counter').default(store),
-          require('./CreateAnnonce').default(store)
+          require('./CreateAnnonce').default(store),
+          require('./Annonce').default(store)
+
         ])
       })
     }
@@ -25,7 +27,7 @@ export const createRoutes = (store) => ([
   {
     path: '/admin',
     component: CoreAdminLayout,
-    indexRoute: AdminHome, 
+    indexRoute: AdminHome,
     getChildRoutes (location, cb) {
       require.ensure([], (require) => {
         cb(null, [
