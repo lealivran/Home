@@ -7,25 +7,23 @@ import ContentAdd from 'material-ui/svg-icons/content/add';
 //Have to change
 import fetch from 'isomorphic-fetch'
 let state = {
-  identifiant : null,
+  username : null,
   password: null
 }
 
 const handleIdentifiant = (event) =>{
-    state.identifiant = event.target.value ;
+    state.username = event.target.value ;
 }
 const handlePassword = (event) =>{
     state.password = event.target.value ;
 }
 const handleSubmit = () =>{
+  console.log(state);
   if( (state.identifiant !== null  && state.password !== null) &&
       (state.identifiant !== ''  && state.password !== '') ){
         fetch('/auth', {
           method: 'post',
-          body: {
-            user: state.identifiant,
-            password: state.password
-          }
+          body: state
         })
         .then( data => {
           const { user } = data ;

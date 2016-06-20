@@ -11,7 +11,8 @@ import webpackDevMiddleware from './middleware/webpack-dev'
 import webpackHMRMiddleware from './middleware/webpack-hmr'
 import mongoose from 'mongoose'
 import _ from 'koa-route'
-import session from 'koa-session'
+import session from "koa-generic-session"
+import MongoStore from "koa-sess-mongo-store"
 import passport from 'koa-passport'
 import config from './config/config'
 const debug = _debug('app:server')
@@ -20,7 +21,10 @@ const app = new Koa()
 const db = mongoose.connection;
 // Sessions
 app.keys = ['38ba4e028d32464afd59bc1ac97a5f966e8fb65f']
-app.use(session(app))
+app.use(session({
+    key: "38ba4e028d32464afd59bc1ac97a5f966e8fb65f",
+    store: new MongoStore({ url: "mongodb://lea:supdeweb@ds011893.mlab.com:11893/homesdw" }),
+  }))
 require("./config/passport")(passport, config)
 app.use(passport.initialize())
 app.use(passport.session())

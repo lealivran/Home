@@ -3,10 +3,20 @@ const Router = require("koa-router");
 const koaBody = require('koa-body')({multipart:true});// body parser
 const annonceCtrl = require("../lib/api/annonces");
 const userCtrl = require("../lib/api/user");
-
+const  secured = function *(next) {
+  if (this.isAuthenticated()) {
+    yield next;
+  } else {
+    this.status = 401;
+  }
+}
 module.exports = function(app) {
   // register functions
   var router = new Router();
+  router.use(function *(next) {
+    this.type = "json";
+    yield next;
+  });
   // open routes
   //annonces
   router.get("/annonces", annonceCtrl.getAllAnnonces);
@@ -20,7 +30,6 @@ module.exports = function(app) {
   router.all("/signout", userCtrl.signOut);
   router.post("/signup",koaBody, userCtrl.createUser);
   // secure   admin routes
-  router.get("users", userCtrl.getAllUser);
   // secure    routes
   router.get("users", userCtrl.getAllUser);
   app.use(router.routes());

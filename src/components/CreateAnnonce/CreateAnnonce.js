@@ -34,7 +34,7 @@ export const CreateAnnonce = (props) => (
     <input type="file" name="uploads" multiple="multiple" onChange={upload}/><br/>
     <input type="text" name="title"  placeholder="Lorum"/><br/>
     <input type="text" name="description"  placeholder="Lorum"/><br/>
-    <input type="text" name="vente"  placeholder="Lorum"/><br/>
+    <input type="checkbox" name="vente"  placeholder="Lorum"/><br/>
     <input type="text" name="vente"  placeholder="Lorum"/><br/>
             <button type="submit">Upload</button>
     </form>

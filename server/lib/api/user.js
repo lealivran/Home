@@ -14,6 +14,9 @@ exports.signIn = function *(){
       if (err) {
         throw err;
       }
+      console.log(info);
+      console.log(err);
+      console.log(user);
       if (user === false) {
         _this.status = 401;
       } else {
