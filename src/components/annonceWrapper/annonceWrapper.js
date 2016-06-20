@@ -7,6 +7,8 @@ import fetch from 'isomorphic-fetch'
 
 import classes from './annonceWrapper.scss'
 import Annonce from '../Annonce'
+import { Grid, Row, Col } from 'react-bootstrap'
+
 
 export default class annonceWrapper extends Component {
 
@@ -35,15 +37,18 @@ export default class annonceWrapper extends Component {
   render(){
     return (
       <div className={classes.annonceContainer}>
-        {this.state.annonces.map((annonce, index) => {
-          return <Link to={`/annonce/${annonce._id}`}>
-            <Annonce
-                  id={annonce._id}
-                  title={annonce.title}
-                  price={annonce.price}
-                  />
-            </Link>
-        })}
+         <Grid>
+            <Row className="show-grid">
+              {this.state.annonces.map((annonce, index) => {
+                 return <Link to={`/annonce/${annonce._id}`}>
+                     <Annonce
+                        title={annonce.title}
+                        price={annonce.price}
+                        />
+                  </Link>
+              })}
+            </Row>
+         </Grid>
       </div>
     )
   }

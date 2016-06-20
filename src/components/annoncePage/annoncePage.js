@@ -6,10 +6,12 @@ import fetch from 'isomorphic-fetch'
 
 
 import classes from './annoncePage.scss'
-import HeaderSearch from '../headerSearch'
 import ImageAnnonce from '../imageAnnonce'
+import Searchbartop from '../imageAnnonce'
 import TitreAnnonce from '../titreAnnonce'
 import InfoAnnonce from '../infoAnnonce'
+import { Grid, Row, Col } from 'react-bootstrap'
+
 
 export default class annoncePage extends Component {
 
@@ -44,7 +46,6 @@ export default class annoncePage extends Component {
     return (
 
       <div>
-        <HeaderSearch />
         <ImageAnnonce
           urlImage="http://www.maisons-delacour.com/photos/diapo/maison-delacour-1836.jpg"
           prix="6274"
