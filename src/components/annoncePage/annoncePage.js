@@ -24,8 +24,8 @@ export default class annoncePage extends Component {
     .then((response) => {
       return response.json()
     })
-    .then((annonce) => {
-      this.setState({annonce: annonce.data })
+    .then((annonce, pictures) => {
+      this.setState({annonce: annonce.data }),
       console.log(annonce);
     })
     .catch((error) => {
@@ -39,36 +39,24 @@ export default class annoncePage extends Component {
 
   render(){
 
-    const {
-      params
-    } = this.props
-
     return (
-
       <div>
         <ImageAnnonce
-          urlImage="http://www.maisons-delacour.com/photos/diapo/maison-delacour-1836.jpg"
-          prix="6274"
+          images="http://www.maisons-delacour.com/photos/diapo/maison-delacour-1836.jpg"
+          price={this.state.annonce.price}
         />
         <TitreAnnonce
-          titre="Appartement 5 pièces 185m² Avignon"
-          ventre="true"
-          adresse="Quartier Saint-Didier, Avignon"
+          titre={this.state.annonce.title}
+          vente={this.state.annonce.vente}
+          // adresse={this.state.annonce.address}
         />
         <InfoAnnonce
-          description="description"
-          pool="true"
-          garden="false"
-          balcony="true"
-          terrace="false"
-          parking="true"
-          cave="true"
-          stairs="2"
-          bedroomNumber="7"
-          roomNumber="9"
-          orientation="west"
-          area="250"
-          furnished="false"
+          description={this.state.annonce.description}
+          features={this.state.annonce.features}
+          orientation={this.state.annonce.orientation}
+          area={this.state.annonce.area}
+          furnished={this.state.annonce.furnished}
+          type={this.state.annonce.type}
         />
       </div>
     )

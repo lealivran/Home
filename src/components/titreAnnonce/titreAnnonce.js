@@ -8,11 +8,13 @@ export const titreAnnonce = ({titre="", vente=null, adresse="" }) => (
     <a className={classes.linkVente} href="#">
       {vente ?
         <span>Acheter</span> :
-        <span>Louez</span>
+        <span>Louer</span>
       }
     </a>
     <h1 className={classes.titre}>{titre}</h1>
-    <p className={classes.adresse}>{adresse}</p>
+
+    {adresse && <p className={classes.adresse}>{adresse}</p>}
+
   </div>
 
 )
