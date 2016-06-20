@@ -10,6 +10,23 @@ const  secured = function *(next) {
     this.status = 401;
   }
 }
+// ------------------------------------
+// JWT Middleware
+// ------------------------------------
+const auth = function *(next) {
+  try {
+    yield next; //Attempt to go through the JWT Validator
+  } catch(e) {
+    if (e.status == 401 ) {
+      // Prepare response to user.
+      this.status = e.status;
+      this.body = 'NO TOKEN , NO CHOCOLATE'
+    } else {
+      throw e; // Pass the error to the next handler since it wasn't a JWT error.
+    }
+  }
+};
+
 module.exports = function(app) {
   // register functions
   var router = new Router();
@@ -26,7 +43,7 @@ module.exports = function(app) {
   router.get("/search/annonces", koaBody, annonceCtrl.getAnnonces);
   //user and auth
   router.get("/auth", userCtrl.getCurrentUser);
-  router.post("/auth", userCtrl.signIn);
+  router.post("/auth",userCtrl.signIn);
   router.all("/signout", userCtrl.signOut);
   router.post("/signup",koaBody, userCtrl.createUser);
   // secure   admin routes

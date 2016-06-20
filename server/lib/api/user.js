@@ -9,21 +9,7 @@ exports.getAllUser = function *() {
 };
 
 exports.signIn = function *(){
-    const  _this = this ;
-    yield* passport.authenticate("local", function*(err, user, info) {
-      if (err) {
-        throw err;
-      }
-      console.log(info);
-      console.log(err);
-      console.log(user);
-      if (user === false) {
-        _this.status = 401;
-      } else {
-        yield _this.login(user);
-        _this.body = { user: user };
-      }
-    }).call(this);
+//return token
 };
 exports.createUser= function *() {
   if(!this.request.body) {
@@ -62,8 +48,5 @@ exports.signOut = function *() {
 };
 
 exports.getCurrentUser = function *() {
-  if (this.passport.user) {
-    this.body = { user: this.passport.user };
-  }
-  this.status = 200;
+  //check credential 
 };

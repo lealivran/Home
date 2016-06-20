@@ -1,5 +1,4 @@
 import Koa from 'koa'
-import fs from 'fs'
 import convert from 'koa-convert'
 import webpack from 'webpack'
 import webpackConfig from '../build/webpack.config'
@@ -11,23 +10,16 @@ import webpackDevMiddleware from './middleware/webpack-dev'
 import webpackHMRMiddleware from './middleware/webpack-hmr'
 import mongoose from 'mongoose'
 import _ from 'koa-route'
-import session from "koa-generic-session"
-import MongoStore from "koa-sess-mongo-store"
-import passport from 'koa-passport'
 import config from './config/config'
+import  parse from 'co-body'
+import  jwt from 'koa-jwt'
 const debug = _debug('app:server')
 const paths = config.utils_paths
 const app = new Koa()
-const db = mongoose.connection;
+const db = mongoose.connection
+
 // Sessions
 app.keys = ['38ba4e028d32464afd59bc1ac97a5f966e8fb65f']
-app.use(session({
-    key: "38ba4e028d32464afd59bc1ac97a5f966e8fb65f",
-    store: new MongoStore({ url: "mongodb://lea:supdeweb@ds011893.mlab.com:11893/homesdw" }),
-  }))
-require("./config/passport")(passport, config)
-app.use(passport.initialize())
-app.use(passport.session())
 // ------------------------------------
 // Connect Database
 // ------------------------------------
@@ -42,12 +34,7 @@ if (config.proxy && config.proxy.enabled) {
   app.use(convert(proxy(config.proxy.options)))
 }
 
-// const modelsPath = "./lib/models";
-// fs.readdirSync(modelsPath).forEach(function(file) {
-//   if (~file.indexOf("js")) {
-//     require(modelsPath + "/" + file);
-//   }
-// });
+
 // ------------------------------------
 // Apply Webpack HMR Middleware
 // ------------------------------------
