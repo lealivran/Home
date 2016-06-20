@@ -42,8 +42,14 @@ export default class annonceWrapper extends Component {
               {this.state.annonces.map((annonce, index) => {
                  return <Link to={`/annonce/${annonce._id}`}>
                      <Annonce
+                        area={annonce.area}
                         title={annonce.title}
                         price={annonce.price}
+                        type={annonce.type}
+                        vente={annonce.vente}
+                        city={annonce.city}
+                        zipcode={annonce.zipcode}
+                        uri={annonce.pictures.uri}
                         />
                   </Link>
               })}
