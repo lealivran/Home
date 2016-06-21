@@ -35,7 +35,9 @@ export default class annonceWrapper extends Component {
   };
 
   render(){
+
     return (
+
       <div className={classes.annonceContainer}>
          <Grid>
             <Row className="show-grid">
@@ -49,7 +51,7 @@ export default class annonceWrapper extends Component {
                         vente={annonce.vente}
                         city={annonce.city}
                         zipcode={annonce.zipcode}
-                        uri={annonce.pictures.uri}
+                        image={annonce.pictures[0].uri}
                         />
                   </Link>
               })}
