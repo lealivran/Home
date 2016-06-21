@@ -45,6 +45,30 @@ userSchema.pre("save", function(done) {
     }
   }).call(this).then(done);
 });
+/**
+ * Methods
+ */
+userSchema.methods.comparePassword = function *(candidatePassword) {
+  return yield bcrypt.compare(candidatePassword, this.password);
+};
+
+/**
+ * Statics
+ */
+
+userSchema.statics.passwordMatches = function *(username, password) {
+  var user = yield this.findOne({ username: username.toLowerCase() }).exec();
+  if (!user) {
+    throw new Error("User not found");
+  }
+
+  if (yield user.comparePassword(password)) {
+    return user;
+  }
+
+  throw new Error("Password does not match");
+};
+
 
 
 let model = mongoose.model('User', userSchema);

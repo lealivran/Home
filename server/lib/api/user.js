@@ -1,16 +1,28 @@
 "use strict";
-const User = require("../models/user") ;
-const passport = require("koa-passport");
+import  User from '../models/user'
+import  co from 'co'
+import { sign , verify } from '../jwt'
 exports.getAllUser = function *() {
   let users = yield User.find().exec();
   if (!users) {
   }
   this.body = { data: users }
 };
-
-exports.signIn = function *(){
-//return token
+exports.signIn = function *(next){
+ const {username, password } = this.request.body
+   co(function *() {
+     try {
+       return yield User.passwordMatches(username, password);
+     } catch (ex) {
+       return null;
+     }
+   }).then( user => {
+      if(user){
+        this.body = {token: sign(user)  }
+      }
+   });
 };
+
 exports.createUser= function *() {
   if(!this.request.body) {
     this.throw("The body is empty", 400)
@@ -41,12 +53,8 @@ exports.createUser= function *() {
   this.body = { user: this.passport.user }
 };
 
-exports.signOut = function *() {
-  this.logout();
-  this.session = null;
-  this.status = 204;
-};
+
 
 exports.getCurrentUser = function *() {
-  //check credential 
+  //check credential
 };

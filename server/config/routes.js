@@ -43,8 +43,7 @@ module.exports = function(app) {
   router.get("/search/annonces", koaBody, annonceCtrl.getAnnonces);
   //user and auth
   router.get("/auth", userCtrl.getCurrentUser);
-  router.post("/auth",userCtrl.signIn);
-  router.all("/signout", userCtrl.signOut);
+  router.post("/auth",koaBody, userCtrl.signIn);
   router.post("/signup",koaBody, userCtrl.createUser);
   // secure   admin routes
   // secure    routes
