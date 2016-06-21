@@ -7,7 +7,7 @@ import { Carousel, CarouselItem, CarouselCaption } from 'react-bootstrap'
 export default class imageAnnonce extends Component {
 
     static propTypes = {
-        images: PropTypes.string,
+        images: PropTypes.array,
         price: PropTypes.string,
     };
 
@@ -22,7 +22,7 @@ export default class imageAnnonce extends Component {
     };
 
     componentDidMount() {
-      // console.log(this.props.price);
+      console.log(this.props.images);
     };
 
 
@@ -38,9 +38,11 @@ export default class imageAnnonce extends Component {
           <div className={classes.CarouselInfo}>
              <Col xs={12} md={12} lg={12}>
                 <Carousel>
-                   <Carousel.Item>
-                      <img className={classes.imageAnnonce} src={images} />
-                   </Carousel.Item>
+                   {images.map((image, index) => {
+                      return <Carousel.Item>
+                      <img className={classes.imageAnnonce} src={image.uri} />
+                      </Carousel.Item>
+                   })}
                 </Carousel>
                 <div className={classes.imageAnnonceInfo}>
                    <div className={classes.infobg}></div>

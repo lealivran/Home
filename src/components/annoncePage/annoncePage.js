@@ -38,13 +38,15 @@ export default class annoncePage extends Component {
   };
 
   render(){
-
+    console.log(this.state.annonce);
     return (
       <div>
+        { this.state.annonce.pictures &&
         <ImageAnnonce
-          images="http://www.maisons-delacour.com/photos/diapo/maison-delacour-1836.jpg"
+          images={this.state.annonce.pictures}
           price={this.state.annonce.price}
         />
+        }
         <TitreAnnonce
           titre={this.state.annonce.title}
           vente={this.state.annonce.vente}
