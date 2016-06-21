@@ -1,6 +1,18 @@
-import AnnonceView from './components/AnnonceView'
+export default (store) => ({
+  path: '/annonce/:id',
+  getComponent (nextState, next) {
+    require.ensure([
+      './containers/AnnonceContainer',
+      // './modules/CreateAnnonce'
+    ], (require) => {
+      const Annonce = require('./containers/AnnonceContainer').default
+      // const createAnnonceReducer = require('./modules/CreateAnnonce').default
+      // injectReducer(store, {
+      //   key: 'Annonces',
+      //   reducer: createAnnonceReducer
+      // })
 
-// Sync route definition
-export default {
-  component: AnnonceView
-}
+      next(null, Annonce)
+    })
+  }
+})

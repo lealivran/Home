@@ -1,0 +1,29 @@
+.titreAnnonce{
+  padding: 15px;
+  min-height: 95px;
+
+  h1{
+    color: #4A4A4A;
+    margin-top: 0px;
+    margin-bottom: 5px;
+  }
+
+  .adresse{
+    font-size: 1.4em;
+  }
+
+  .linkVente{
+    text-transform: uppercase;
+    color: white;
+    padding: 20px 40px;
+    background-color: #e86a6a;
+    font-size: 1.3em;
+    float: right;
+    position: absolute;
+    right: 15px;
+  }
+  .linkVente:hover{
+    text-decoration: none;
+    opacity: 0.8;
+  }
+}

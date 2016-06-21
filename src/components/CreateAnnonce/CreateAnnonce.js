@@ -30,7 +30,7 @@ const handleSubmit = (event) =>{
 
 export const CreateAnnonce = (props) => (
   <div>
-    <form action="/annonce" enctype="multipart/form-data" method="POST" onSubmit={handleSubmit} >
+    <form  onSubmit={handleSubmit} >
     <input type="file" name="uploads" multiple="multiple" onChange={upload}/><br/>
     <input type="text" name="title"  placeholder="Lorum"/><br/>
     <input type="text" name="description"  placeholder="Lorum"/><br/>
