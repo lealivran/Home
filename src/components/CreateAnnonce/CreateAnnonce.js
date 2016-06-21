@@ -38,7 +38,7 @@ export const CreateAnnonce = (props) => (
     <input type="text" name="vente"  placeholder="Lorum"/><br/>
             <button type="submit">Upload</button>
     </form>
-    {(state.done)?<div>hdjksqhjkdqs</div>:<div></div> }
+    {(state.done)?<div></div>:<div></div> }
   </div>
 )
 

@@ -5,6 +5,7 @@ import Home from './Home'
 import AdminHome from './AdminHome'
 import CounterRoute from './Counter'
 import CreateAnnonce from './CreateAnnonce'
+import Dashboard from './Dashboard'
 /*  Note: Instead of using JSX, we recommend using react-router
     PlainRoute objects to build route definitions.   */
 
@@ -17,7 +18,7 @@ export const createRoutes = (store) => ([
       require.ensure([], (require) => {
         cb(null, [
           require('./Counter').default(store),
-          require('./CreateAnnonce').default(store)
+          require('./searchAnnonce').default(store)
         ])
       })
     }
@@ -25,11 +26,12 @@ export const createRoutes = (store) => ([
   {
     path: '/admin',
     component: CoreAdminLayout,
-    indexRoute: AdminHome, 
+    indexRoute: AdminHome,
     getChildRoutes (location, cb) {
       require.ensure([], (require) => {
         cb(null, [
-          require('./CreateAnnonce').default(store)
+          require('./CreateAnnonce').default(store),
+          require('./Dashboard').default(store)
         ])
       })
     }
