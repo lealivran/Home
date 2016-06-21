@@ -14,12 +14,6 @@ export const HomeView = () => (
    <Header />
     <CityPresentation/>
     <AnnonceWrapper/>
-    <Link to='admin/create/annonce'>
-      Zen
-    </Link>
-    <Link to='admin'>
-      Home
-    </Link>
     <Footer />
   </div>
 )

@@ -7,9 +7,10 @@ import fetch from 'isomorphic-fetch'
 
 import classes from './annoncePage.scss'
 import ImageAnnonce from '../imageAnnonce'
-import Searchbartop from '../imageAnnonce'
 import TitreAnnonce from '../titreAnnonce'
 import InfoAnnonce from '../infoAnnonce'
+import Footer from '../Footer'
+import Searchbartop from 'Components/searchBarTop'
 import { Grid, Row, Col } from 'react-bootstrap'
 
 
@@ -41,6 +42,7 @@ export default class annoncePage extends Component {
     console.log(this.state.annonce);
     return (
       <div>
+        <Searchbartop />
         { this.state.annonce.pictures &&
         <ImageAnnonce
           images={this.state.annonce.pictures}
@@ -60,6 +62,7 @@ export default class annoncePage extends Component {
           furnished={this.state.annonce.furnished}
           type={this.state.annonce.type}
         />
+        <Footer />
       </div>
     )
   }
